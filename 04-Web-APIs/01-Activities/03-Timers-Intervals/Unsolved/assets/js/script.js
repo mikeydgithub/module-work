@@ -9,7 +9,25 @@ function countdown() {
   var timeLeft = 5;
 
   // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function() {});
+  var timeInterval = setInterval(function() {
+      if (timeLeft > 1) {
+      //Set the 'textContent' of 'timerEl' to show the remianing seconds
+      timerEl.textContent = timeLeft + ' seconds remaining';
+      //Decrement 'timeLeft' by 1
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      //Once 'timeLeft get to 0, set 'timerEl' to an empty string
+      timerEl.textContent = timeLeft + ' second remaining';
+      timeLeft--;
+    } else {
+      //Once 'timeLeft' gets to 0, set 'timerEl' to an empty string
+      timerEl.textContent = '';
+      //Use 'clearInterval()' to stop the timer
+      clearInterval(timeInterval);
+      //Call the 'displayMessage()' function
+      displayMessage();
+    }
+  }, 1000)
 }
 
 // Displays the message one word at a time
